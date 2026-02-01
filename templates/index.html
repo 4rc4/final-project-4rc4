@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Available Horses</h1>
+    <a href="/create" class="btn btn-primary">Sell a Horse</a>
+</div>
+
+<div class="row">
+    {% for horse in horses %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            {% if horse.image_url %}
+            <img src="{{ horse.image_url }}" class="card-img-top" alt="{{ horse.name }}" style="height: 200px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ horse.name }}</h5>
+                <p class="card-text text-muted">{{ horse.breed }}</p>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">Age: {{ horse.age }} years</li>
+                    <li class="list-group-item"><strong>${{ horse.price }}</strong></li>
+                </ul>
+                <a href="/edit/{{ horse.id }}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                <a href="/delete/{{ horse.id }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
