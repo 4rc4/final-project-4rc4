@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="mb-3">My Orders</h3>
+
+{% if orders|length == 0 %}
+  <div class="alert alert-info">No orders yet.</div>
+{% endif %}
+
+<div class="list-group">
+  {% for o in orders %}
+    <a class="list-group-item list-group-item-action" href="{{ url_for('order_detail', order_id=o.id) }}">
+      <div class="d-flex justify-content-between">
+        <div>
+          <strong>Order #{{ o.id }}</strong> — {{ o.horse.name }}
+          <div class="small text-muted">{{ o.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+        </div>
+        <div class="text-end">
+          <div class="fw-bold">${{ '%.2f'|format(o.price_at_purchase) }}</div>
+          <span class="badge text-bg-success">{{ o.status }}</span>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+{% endblock %}

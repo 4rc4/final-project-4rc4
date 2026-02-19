@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="mb-1">Sell a Horse</h3>
+        <p class="text-muted mb-4">Create a listing for the marketplace.</p>
+
+        <form method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label class="form-label">Name *</label>
+            <input class="form-control" name="name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Breed *</label>
+            <input class="form-control" name="breed" required>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Age (years) *</label>
+              <input class="form-control" name="age" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Price (USD) *</label>
+              <input class="form-control" name="price" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input class="form-control" name="location" placeholder="e.g., Warsaw">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="description" rows="4" placeholder="Temperament, training, purpose..."></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">Photo</label>
+            <input class="form-control" type="file" name="image">
+          </div>
+
+          <button class="btn btn-success btn-lg" type="submit">Publish Listing</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

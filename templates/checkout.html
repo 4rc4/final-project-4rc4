@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="mb-1">Checkout</h3>
+        <p class="text-muted mb-4">You are buying: <strong>{{ horse.name }}</strong> — ${{ '%.2f'|format(horse.price) }}</p>
+
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label">Full Name *</label>
+            <input class="form-control" name="full_name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input class="form-control" name="phone">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Address *</label>
+            <textarea class="form-control" name="address" rows="3" required></textarea>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-success btn-lg" type="submit">Pay & Complete Purchase</button>
+            <a class="btn btn-outline-dark btn-lg" href="{{ url_for('horse_detail', horse_id=horse.id) }}">Cancel</a>
+          </div>
+
+          <div class="text-muted small mt-3">
+            Demo payment: this will create an order and mark the listing as SOLD.
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

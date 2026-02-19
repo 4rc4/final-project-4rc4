@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="mb-3">Create Account</h3>
+
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label">Email *</label>
+            <input class="form-control" name="email" type="email" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Password *</label>
+            <input class="form-control" name="password" type="password" required>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">I want to:</label>
+            <select class="form-select" name="role">
+              <option value="buyer" selected>Buy horses</option>
+              <option value="seller">Sell horses</option>
+            </select>
+          </div>
+
+          <button class="btn btn-warning w-100" type="submit">Register</button>
+        </form>
+
+        <div class="text-muted small mt-3">
+          Already have an account? <a href="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
